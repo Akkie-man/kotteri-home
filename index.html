@@ -72,77 +72,28 @@
       .hero h1{font-size:clamp(28px,9vw,50px);font-size:clamp(28px,10.6cqw,56px);letter-spacing:-.02em;margin:16px 0}
       .hero .hero-photo{max-height:none}
     }
+
+    /* 読み物への導線。アプリ紹介はHTMLに直接置いて本文として読めるようにする */
+    .app-info .app-guide{background:transparent;color:var(--accent);border:0;box-shadow:none;padding:4px 0;margin:16px 0 0;text-decoration:underline;text-underline-offset:4px}
+    .app-info .app-guide:hover{background:transparent;color:#9d2b15}
+    .stories-lead{max-width:38em;font-size:17px;color:var(--muted)}
+    .story-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:30px}
+    .story{display:block;text-decoration:none;color:var(--ink);background:#fff8e9;border:2px solid var(--ink);padding:26px;box-shadow:6px 6px 0 var(--ink)}
+    .story span{font-size:12px;font-weight:900;letter-spacing:.1em;color:var(--accent)}
+    .story h3{font-size:21px;line-height:1.45;margin:18px 0 12px}.story p{color:var(--muted);margin:0 0 22px}.story b{color:var(--accent)}
+    .story:hover{background:#ffe9c3}
+    @media(max-width:700px){.story-list{grid-template-columns:1fr;gap:18px}.story{padding:22px}.header-inner nav{gap:8px 14px;flex-wrap:wrap}}
   </style>
 </head>
 <body>
-  <header><div class="header-inner"><a class="wordmark" href="/">こってり開発部</a><nav aria-label="主なリンク"><a href="#apps">アプリ</a><a href="#about">わたしたちについて</a><a href="/privacy.html">プライバシー</a></nav></div></header>
+  <header><div class="header-inner"><a class="wordmark" href="/">こってり開発部</a><nav aria-label="主なリンク"><a href="#apps">アプリ</a><a href="/coffee-log-guide.html">使い方</a><a href="/notes/passport.html">開発ノート</a><a href="#about">わたしたちについて</a><a href="/privacy.html">プライバシー</a></nav></div></header>
   <main>
     <div class="hero"><div class="hero-copy"><div class="eyebrow">KOTTERI KAIHATSUBU</div><h1>好きなことには、<br>こってりいこう。</h1><p>ラーメンは濃いめ。アプリ作りも、好きなことには手を抜かない。日々の楽しみを、もっと面白くする開発部です。</p><div class="rule" aria-hidden="true"></div><a class="hero-cta" href="#apps">つくったアプリを見る ↓</a></div><img class="hero-photo" fetchpriority="high" decoding="async" src="/hero-shiba-ramen.jpg" alt="ラーメンとパソコンを前にした、こってり開発部の柴犬" width="1448" height="1086"></div>
-    <section id="apps"><div class="section-head"><h2>公開中のアプリ</h2><small>OUR APPS</small></div><div id="app-list"></div></section>
-    <section class="about" id="about"><div class="section-head"><h2>こってり開発部について</h2><small>ABOUT</small></div><p>個人でアプリを企画・制作する開発ユニットです。何気ない一杯や、日々の小さな体験を、振り返る楽しさと次を探すきっかけに変えていきます。</p><div class="about-art"><picture><source type="image/webp" srcset="/thumbs-up-dog-600.webp"><img src="/thumbs-up-dog-600.png" alt="親指を立てる、デフォルメされた柴犬" width="600" height="600" loading="lazy" decoding="async"></picture></div></section>
+    <section id="apps"><div class="section-head"><h2>公開中のアプリ</h2><small>OUR APPS</small></div><div id="app-list"><article class="app"><div class="app-visual"><span>APP / AVAILABLE NOW</span><strong>COFFEE<br>LOG</strong><p>一杯から、世界を旅する。</p></div><div class="app-info"><h3>COFFEE LOG</h3><p>飲んだコーヒーを記録すると、産地のスタンプがパスポートと世界地図に広がります。好みを振り返りながら、次の一杯を探せるアプリです。</p><ul><li>豆・ドリンクの記録と好みの評価</li><li>気分から選ぶ診断と産地の読み物</li><li>ログインすると別端末へ記録を引き継げる</li></ul><a href="https://coffee.kotteri-apps.com/" target="_blank" rel="noopener noreferrer">COFFEE LOGを開く ↗</a><a class="app-guide" href="/coffee-log-guide.html">使い方を読む →</a></div></article></div></section>
+    <section class="about" id="about"><div class="section-head"><h2>こってり開発部について</h2><small>ABOUT</small></div><p>こってり開発部は、個人でアプリを企画・制作する開発ユニットです。ラーメンへの熱量と同じくらい、好きなことを細部まで楽しむ姿勢で作っています。<br><br>公開中のCOFFEE LOGでは、一杯の記録を産地パスポートに変えました。飲んだものを見返し、好みを知り、次に飲みたい豆を探す。日々の小さな体験が続く形を考えています。</p><div class="about-art"><picture><source type="image/webp" srcset="/thumbs-up-dog-600.webp"><img src="/thumbs-up-dog-600.png" alt="親指を立てる、デフォルメされた柴犬" width="600" height="600" loading="lazy" decoding="async"></picture></div></section>
+    <section class="stories" id="stories"><div class="section-head"><h2>一杯をもっと楽しむ</h2><small>READ &amp; EXPLORE</small></div><p class="stories-lead">アプリの使い方と、産地パスポートに込めた考え方。気になったところから読んでみてください。</p><div class="story-list"><a class="story" href="/coffee-log-guide.html"><span>GUIDE / COFFEE LOG</span><h3>COFFEE LOGの使い方</h3><p>一杯の記録から、産地スタンプ、気分で選ぶ診断まで。最初に触る人のための案内です。</p><b>使い方を読む →</b></a><a class="story" href="/notes/passport.html"><span>DEVELOPMENT NOTE</span><h3>産地パスポートを作った理由</h3><p>飲んだ一杯を「過去の記録」と「次の産地探し」の両方につなげる、設計の考え方です。</p><b>開発ノートを読む →</b></a></div></section>
     <section class="contact"><div class="section-head"><h2>お問い合わせ</h2><small>CONTACT</small></div><p>ご意見・お問い合わせは <a href="https://www.instagram.com/kotteri_kaihatsubu/" target="_blank" rel="noopener noreferrer">Instagram @kotteri_kaihatsubu</a> へ。</p></section>
   </main>
-  <footer><span>© こってり開発部</span><div><a href="/privacy.html">プライバシーポリシー</a><a href="https://www.instagram.com/kotteri_kaihatsubu/" target="_blank" rel="noopener noreferrer">Instagram</a></div></footer>
-  <script>
-    // アプリを追加する際は、この配列に1件追加します。公開中のものだけ表示します。
-    const apps = [{name:"COFFEE LOG",subtitle:"一杯から、世界を旅する。",description:"飲んだコーヒーを記録すると、産地のスタンプがパスポートと世界地図に広がります。好みを振り返りながら、次の一杯を探せます。",url:"https://coffee.kotteri-apps.com/",status:"published",features:["豆・ドリンクの記録と好みの評価","気分から選ぶ診断と産地の読み物","ログインすると別端末へ記録を引き継げる"]}];
-    const root=document.getElementById("app-list");
-    for(const app of apps.filter(item=>item.status==="published")){
-      const article=document.createElement("article");article.className="app";
-      const visual=document.createElement("div");visual.className="app-visual";
-      const label=document.createElement("span");label.textContent="APP / AVAILABLE NOW";
-      const title=document.createElement("strong");title.textContent=app.name;
-      const subtitle=document.createElement("p");subtitle.textContent=app.subtitle;
-      visual.append(label,title,subtitle);
-      const info=document.createElement("div");info.className="app-info";
-      const name=document.createElement("h3");name.textContent=app.name;
-      const description=document.createElement("p");description.textContent=app.description;
-      const list=document.createElement("ul");for(const feature of app.features){const li=document.createElement("li");li.textContent=feature;list.append(li)}
-      const link=document.createElement("a");link.href=app.url;link.target="_blank";link.rel="noopener noreferrer";link.textContent=app.name+"を開く\u00a0↗";
-      info.append(name,description,list,link);article.append(visual,info);root.append(article);
-    }
-
-    // 文節単位で折り返す（Intl.Segmenter非対応の環境では何もしない）。本文の文字・順序は一切変えない。
-    function phrasing(root){
-      if(!window.Intl||!Intl.Segmenter)return;
-      const seg=new Intl.Segmenter('ja',{granularity:'word'});
-      const JP=/[\u3040-\u30ff\u3400-\u9fff]/, HIRA=/^[\u3040-\u309f]+$/, KANJI1=/^[\u4e00-\u9fff]$/, CLOSE=/^[、。，．！？」』）】・…]+$/, OPEN=/^[「『（【]+$/;
-      const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>{
-        if(!JP.test(n.nodeValue))return NodeFilter.FILTER_REJECT;
-        const t=n.parentElement&&n.parentElement.tagName;
-        if(t==='SCRIPT'||t==='STYLE'||n.parentElement.closest('.ph'))return NodeFilter.FILTER_REJECT;
-        return NodeFilter.FILTER_ACCEPT}});
-      const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
-      for(const node of nodes){
-        const original=node.nodeValue;
-        const parts=[];let cur='',carry='';
-        let lat='';
-        const flushLat=()=>{ if(!lat)return; const m=lat.match(/^(\s*)(.*?)(\s*)$/s);
-          if(m[1])parts.push([m[1],false]); if(m[2])parts.push([m[2],m[2].length<=40&&/[A-Za-z0-9]/.test(m[2])]); if(m[3])parts.push([m[3],false]); lat=''; };
-        const flush=()=>{ flushLat(); if(cur){parts.push([cur,true]);cur=''} };
-        for(const {segment} of seg.segment(original)){
-          if(OPEN.test(segment)){ flush(); carry+=segment; continue; }
-          if(CLOSE.test(segment)){ flushLat(); if(carry){cur+=carry;carry=''} cur+=segment; continue; }
-          if(!JP.test(segment)){ // 英数字・記号・空白: 折り返し単位にせず、そのまま出す
-            if(cur){parts.push([cur,true]);cur=''} if(carry){lat+=carry;carry=''} lat+=segment; continue; }
-          flushLat();
-          if(cur&&!carry&&HIRA.test(segment)&&segment.length<=3){cur+=segment;continue}
-          if(cur&&!carry&&KANJI1.test(segment)&&/[\u4e00-\u9fff]$/.test(cur)){cur+=segment;continue}
-          flush(); cur=carry+segment; carry='';
-        }
-        if(carry){cur+=carry;carry=''}
-        flush();
-        // 安全確認: 連結した結果が元の文字列と1文字でも違えば、何もせず元のまま残す
-        if(parts.map(p=>p[0]).join('')!==original)continue;
-        const frag=document.createDocumentFragment();
-        for(const [text,wrap] of parts){
-          if(wrap){const sp=document.createElement('span');sp.className='ph';sp.textContent=text;frag.append(sp)}
-          else frag.append(document.createTextNode(text));
-        }
-        node.replaceWith(frag);
-      }
-    }
-    phrasing(document.body);
-  </script>
+  <footer><span>© こってり開発部</span><div><a href="/coffee-log-guide.html">使い方</a><a href="/notes/passport.html">開発ノート</a><a href="/privacy.html">プライバシーポリシー</a><a href="https://www.instagram.com/kotteri_kaihatsubu/" target="_blank" rel="noopener noreferrer">Instagram</a></div></footer>
 </body>
 </html>

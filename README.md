@@ -1,10 +1,10 @@
 # こってり開発部 ホームサイト
 
-`index.html`、`privacy.html`、`ads.txt` をサイトのルートに置く静的サイトです。ビルドや依存ライブラリは不要です。公開先は `kotteri-apps.com` を想定しています。
+`index.html`、`coffee-log-guide.html`、`notes/passport.html`、`privacy.html`、`editorial.css`、`ads.txt` と画像をそのままサイトのルートへ置く静的サイトです。`notes` フォルダも一緒にアップロードしてください。ビルドや依存ライブラリは不要です。公開先は `kotteri-apps.com` を想定しています。
 
 ## アプリを追加する
 
-`index.html` の末尾にある `const apps = [...]` に、`name`、`subtitle`、`description`、`url`、`status`、`features` を持つデータを1件追加してください。`status: "published"` のアプリだけ表示されます。公開前にはURLと機能説明を確認してください。
+アプリの紹介文を審査用クローラーやJavaScript無効環境でも読めるよう、ホームの公開アプリ欄はHTML本文に直接置きました。新しいアプリを公開したら、`index.html` の `<div id="app-list">` 内にある `<article class="app">` をコピーして内容とリンクを変更してください。未公開アプリのカードは追加せず、公開後に掲載します。
 
 ## 外部リソース
 
@@ -13,6 +13,13 @@
 ## 公開前に確認すること
 
 - `https://kotteri-apps.com/`、`/privacy.html`、`/ads.txt` に直接アクセスできること。
+- `https://kotteri-apps.com/coffee-log-guide.html` と `/notes/passport.html` を直接開け、ホームから双方へ移動できること。
 - `ads.txt` がテキストとして返ること。
 - COFFEE LOG 側のプライバシーポリシーを別途確認・整備すること。ホームサイトのポリシーはアプリ側の代わりにはなりません。
 - ドメインの移管手順では、既存の `coffee` およびメール関連の DNS レコードを変更しないこと。
+
+## 今回の追加内容
+
+- 使い方ページは実装済み機能に基づく文章です。COFFEE LOGの実画面画像は提供されていないため掲載していません。アプリ側のUIや保存仕様が変わったときは本文を確認してください。
+- 開発ノートは「記録→好みの振り返り→次の一杯」という製品の考え方を説明しています。利用者数や架空の開発実績は書いていません。
+- プライバシーポリシーのAdSense表記を「審査を申請中」に合わせました。審査結果や広告配信開始時には再度更新してください。
