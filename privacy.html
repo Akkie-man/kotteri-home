@@ -8,11 +8,11 @@
 <section><h2>広告について</h2><p>Google AdSenseの審査を申請する準備中です。現時点で、このホームサイトに広告は配信していません。広告を開始する場合は、Cookie等の利用を含め、本ページを更新します。</p></section>
 <section><h2>お問い合わせ・改定</h2><p>お問い合わせは <a href="https://www.instagram.com/kotteri_kaihatsubu/" target="_blank" rel="noopener noreferrer">Instagram @kotteri_kaihatsubu</a> のDMへお願いします。運用やサービスの変更に応じて、本ページを改定します。</p></section>
 </main><script>
-    // 文節単位で折り返す（Intl.Segmenter非対応の環境では何もしない）
+    // 文節単位で折り返す（Intl.Segmenter非対応の環境では何もしない）。本文の文字・順序は一切変えない。
     function phrasing(root){
       if(!window.Intl||!Intl.Segmenter)return;
       const seg=new Intl.Segmenter('ja',{granularity:'word'});
-      const JP=/[\u3040-\u30ff\u3400-\u9fff]/, HIRA=/^[\u3040-\u309f]+$/, CLOSE=/^[、。，．！？」』）】・…]+$/, OPEN=/^[「『（【]+$/;
+      const JP=/[\u3040-\u30ff\u3400-\u9fff]/, HIRA=/^[\u3040-\u309f]+$/, KANJI1=/^[\u4e00-\u9fff]$/, CLOSE=/^[、。，．！？」』）】・…]+$/, OPEN=/^[「『（【]+$/;
       const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>{
         if(!JP.test(n.nodeValue))return NodeFilter.FILTER_REJECT;
         const t=n.parentElement&&n.parentElement.tagName;
@@ -20,18 +20,26 @@
         return NodeFilter.FILTER_ACCEPT}});
       const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
       for(const node of nodes){
+        const original=node.nodeValue;
         const parts=[];let cur='',carry='';
-        for(const {segment} of seg.segment(node.nodeValue)){
-          if(!JP.test(segment)&&!CLOSE.test(segment)&&!OPEN.test(segment)){ if(cur){parts.push([cur,true]);cur=''} parts.push([segment,false]); continue; }
-          if(CLOSE.test(segment)){cur+=segment;continue}
-          if(OPEN.test(segment)){ if(cur){parts.push([cur,true]);cur=''} carry+=segment; continue }
-          if(cur&&HIRA.test(segment)&&segment.length<=3){cur+=segment;continue}
-          if(cur&&segment.length===1&&/[\u4e00-\u9fff]/.test(segment)&&/[\u4e00-\u9fff]$/.test(cur)){cur+=segment;continue}
-          if(cur)parts.push([cur,true]);
-          cur=carry+segment;carry='';
+        let lat='';
+        const flushLat=()=>{ if(!lat)return; const m=lat.match(/^(\s*)(.*?)(\s*)$/s);
+          if(m[1])parts.push([m[1],false]); if(m[2])parts.push([m[2],m[2].length<=40&&/[A-Za-z0-9]/.test(m[2])]); if(m[3])parts.push([m[3],false]); lat=''; };
+        const flush=()=>{ flushLat(); if(cur){parts.push([cur,true]);cur=''} };
+        for(const {segment} of seg.segment(original)){
+          if(OPEN.test(segment)){ flush(); carry+=segment; continue; }
+          if(CLOSE.test(segment)){ flushLat(); if(carry){cur+=carry;carry=''} cur+=segment; continue; }
+          if(!JP.test(segment)){ // 英数字・記号・空白: 折り返し単位にせず、そのまま出す
+            if(cur){parts.push([cur,true]);cur=''} if(carry){lat+=carry;carry=''} lat+=segment; continue; }
+          flushLat();
+          if(cur&&!carry&&HIRA.test(segment)&&segment.length<=3){cur+=segment;continue}
+          if(cur&&!carry&&KANJI1.test(segment)&&/[\u4e00-\u9fff]$/.test(cur)){cur+=segment;continue}
+          flush(); cur=carry+segment; carry='';
         }
-        if(carry)cur+=carry;
-        if(cur)parts.push([cur,true]);
+        if(carry){cur+=carry;carry=''}
+        flush();
+        // 安全確認: 連結した結果が元の文字列と1文字でも違えば、何もせず元のまま残す
+        if(parts.map(p=>p[0]).join('')!==original)continue;
         const frag=document.createDocumentFragment();
         for(const [text,wrap] of parts){
           if(wrap){const sp=document.createElement('span');sp.className='ph';sp.textContent=text;frag.append(sp)}

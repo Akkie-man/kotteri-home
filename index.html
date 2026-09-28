@@ -30,14 +30,14 @@
     @media(max-width:760px){.hero{grid-template-columns:1fr;min-height:0}.hero-copy{padding:84px 24px 0}.hero h1{font-size:clamp(44px,10vw,68px)}.hero-art{height:340px;padding:0 10px}.hero-art img{height:370px;width:auto;max-width:100%}.hero-sticker{top:4%;right:8%;font-size:15px;padding:13px 8px}.app,.about{grid-template-columns:1fr}.app-visual{min-height:260px;border-right:0;border-bottom:3px solid var(--ink)}.about-art{grid-column:1;grid-row:auto;width:230px}.about .section-head,.about>p{grid-column:1}}
     @media(max-width:420px){.header-inner{align-items:flex-start;flex-direction:column;gap:4px}.header-inner nav{gap:14px;font-size:13px}.hero h1{font-size:43px}.hero p{font-size:16px}.hero-art{height:290px}.hero-art img{height:320px}.section-head{display:block}.section-head small{display:block;margin-top:6px}.app-info,.app-visual{padding:25px}.app-visual strong{font-size:43px}section{padding:56px 0}}
     /* インスタ用ビジュアルの実写感を軸にしたヒーロー */
-    .hero{display:block;min-height:610px;background:#fff0d5 url('/assets/hero-shiba-ramen.png') center right/cover no-repeat;color:var(--ink);border-bottom:6px solid var(--ink)}
+    .hero{display:block;min-height:610px;background:#fff0d5 url('/assets/hero-shiba-ramen.jpg') center right/cover no-repeat;color:var(--ink);border-bottom:6px solid var(--ink)}
     .hero:before{background:var(--accent);color:#fff7df}.hero-copy{position:relative;padding:105px 0 75px clamp(22px,5vw,64px);width:min(60%,600px)}
     .hero .eyebrow{background:var(--accent);color:#fff;font-size:13px}.hero h1{color:var(--ink);font-size:clamp(43px,5.6vw,72px);text-shadow:3px 3px 0 #fff8e9}.hero p{color:var(--ink);font-weight:800;text-shadow:1px 1px 0 #fff7e9}.hero .rule{background:var(--accent)}
     .hero-cta{background:var(--accent);color:#fff8eb}.about{grid-template-columns:1fr}.about .section-head,.about>p{grid-column:1}.about>p{max-width:690px}
     @media(max-width:760px){.hero{min-height:790px;background-position:62% bottom;background-size:auto 70%;background-color:#fff0d5}.hero-copy{width:100%;padding:76px 24px 0;background:linear-gradient(#fff0d5 86%,transparent)}.hero h1{font-size:clamp(41px,9vw,61px)}.hero p{max-width:450px;font-size:16px}.hero-cta{margin-top:20px}.about{grid-template-columns:1fr}}
     @media(max-width:420px){.hero{min-height:720px;background-size:auto 57%;background-position:62% bottom}.hero-copy{padding-top:68px}.hero h1{font-size:40px;margin:18px 0}.hero p{line-height:1.65}.hero .rule{margin-top:17px}}
     /* 小さい画面では写真を独立した段に置き、文字との重なりを防ぐ */
-    .hero{background-image:linear-gradient(90deg,#fff0d5 0%,#fff0d5ed 28%,#fff0d500 61%),url('/assets/hero-shiba-ramen.png')}
+    .hero{background-image:linear-gradient(90deg,#fff0d5 0%,#fff0d5ed 28%,#fff0d500 61%),url('/assets/hero-shiba-ramen.jpg')}
     .hero-photo{display:none}.hero-copy{width:min(54%,570px)}.hero h1{white-space:nowrap}
     .about{grid-template-columns:minmax(0,1.3fr) minmax(200px,.7fr);gap:10px 48px;align-items:center}.about .section-head{grid-column:1;align-self:end}.about>p{grid-column:1;align-self:start}.about-art{grid-column:2;grid-row:1 / span 2;align-self:center;justify-self:center;width:min(100%,285px);padding:10px;border-radius:50%;background:#f8c65e;box-shadow:8px 8px 0 var(--ink)}.about-art img{display:block;width:100%;height:auto}
     @media(max-width:900px){.hero-copy{width:60%}.hero h1{font-size:clamp(40px,5.8vw,58px)}}
@@ -77,9 +77,9 @@
 <body>
   <header><div class="header-inner"><a class="wordmark" href="/">こってり開発部</a><nav aria-label="主なリンク"><a href="#apps">アプリ</a><a href="#about">わたしたちについて</a><a href="/privacy.html">プライバシー</a></nav></div></header>
   <main>
-    <div class="hero"><div class="hero-copy"><div class="eyebrow">KOTTERI KAIHATSUBU</div><h1>好きなことには、<br>こってりいこう。</h1><p>ラーメンは濃いめ。アプリ作りも、好きなことには手を抜かない。日々の楽しみを、もっと面白くする開発部です。</p><div class="rule" aria-hidden="true"></div><a class="hero-cta" href="#apps">つくったアプリを見る ↓</a></div><img class="hero-photo" src="/assets/hero-shiba-ramen.png" alt="ラーメンとパソコンを前にした、こってり開発部の柴犬" width="1448" height="1086"></div>
+    <div class="hero"><div class="hero-copy"><div class="eyebrow">KOTTERI KAIHATSUBU</div><h1>好きなことには、<br>こってりいこう。</h1><p>ラーメンは濃いめ。アプリ作りも、好きなことには手を抜かない。日々の楽しみを、もっと面白くする開発部です。</p><div class="rule" aria-hidden="true"></div><a class="hero-cta" href="#apps">つくったアプリを見る ↓</a></div><img class="hero-photo" fetchpriority="high" decoding="async" src="/assets/hero-shiba-ramen.jpg" alt="ラーメンとパソコンを前にした、こってり開発部の柴犬" width="1448" height="1086"></div>
     <section id="apps"><div class="section-head"><h2>公開中のアプリ</h2><small>OUR APPS</small></div><div id="app-list"></div></section>
-    <section class="about" id="about"><div class="section-head"><h2>こってり開発部について</h2><small>ABOUT</small></div><p>個人でアプリを企画・制作する開発ユニットです。何気ない一杯や、日々の小さな体験を、振り返る楽しさと次を探すきっかけに変えていきます。</p><div class="about-art"><img src="/assets/thumbs-up-dog.png" alt="親指を立てる、デフォルメされた柴犬" width="1254" height="1254" loading="lazy"></div></section>
+    <section class="about" id="about"><div class="section-head"><h2>こってり開発部について</h2><small>ABOUT</small></div><p>個人でアプリを企画・制作する開発ユニットです。何気ない一杯や、日々の小さな体験を、振り返る楽しさと次を探すきっかけに変えていきます。</p><div class="about-art"><picture><source type="image/webp" srcset="/assets/thumbs-up-dog-600.webp"><img src="/assets/thumbs-up-dog-600.png" alt="親指を立てる、デフォルメされた柴犬" width="600" height="600" loading="lazy" decoding="async"></picture></div></section>
     <section class="contact"><div class="section-head"><h2>お問い合わせ</h2><small>CONTACT</small></div><p>ご意見・お問い合わせは <a href="https://www.instagram.com/kotteri_kaihatsubu/" target="_blank" rel="noopener noreferrer">Instagram @kotteri_kaihatsubu</a> へ。</p></section>
   </main>
   <footer><span>© こってり開発部</span><div><a href="/privacy.html">プライバシーポリシー</a><a href="https://www.instagram.com/kotteri_kaihatsubu/" target="_blank" rel="noopener noreferrer">Instagram</a></div></footer>
@@ -102,11 +102,11 @@
       info.append(name,description,list,link);article.append(visual,info);root.append(article);
     }
 
-    // 文節単位で折り返す（Intl.Segmenter非対応の環境では何もしない）
+    // 文節単位で折り返す（Intl.Segmenter非対応の環境では何もしない）。本文の文字・順序は一切変えない。
     function phrasing(root){
       if(!window.Intl||!Intl.Segmenter)return;
       const seg=new Intl.Segmenter('ja',{granularity:'word'});
-      const JP=/[\u3040-\u30ff\u3400-\u9fff]/, HIRA=/^[\u3040-\u309f]+$/, CLOSE=/^[、。，．！？」』）】・…]+$/, OPEN=/^[「『（【]+$/;
+      const JP=/[\u3040-\u30ff\u3400-\u9fff]/, HIRA=/^[\u3040-\u309f]+$/, KANJI1=/^[\u4e00-\u9fff]$/, CLOSE=/^[、。，．！？」』）】・…]+$/, OPEN=/^[「『（【]+$/;
       const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>{
         if(!JP.test(n.nodeValue))return NodeFilter.FILTER_REJECT;
         const t=n.parentElement&&n.parentElement.tagName;
@@ -114,18 +114,26 @@
         return NodeFilter.FILTER_ACCEPT}});
       const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
       for(const node of nodes){
+        const original=node.nodeValue;
         const parts=[];let cur='',carry='';
-        for(const {segment} of seg.segment(node.nodeValue)){
-          if(!JP.test(segment)&&!CLOSE.test(segment)&&!OPEN.test(segment)){ if(cur){parts.push([cur,true]);cur=''} parts.push([segment,false]); continue; }
-          if(CLOSE.test(segment)){cur+=segment;continue}
-          if(OPEN.test(segment)){ if(cur){parts.push([cur,true]);cur=''} carry+=segment; continue }
-          if(cur&&HIRA.test(segment)&&segment.length<=3){cur+=segment;continue}
-          if(cur&&segment.length===1&&/[\u4e00-\u9fff]/.test(segment)&&/[\u4e00-\u9fff]$/.test(cur)){cur+=segment;continue}
-          if(cur)parts.push([cur,true]);
-          cur=carry+segment;carry='';
+        let lat='';
+        const flushLat=()=>{ if(!lat)return; const m=lat.match(/^(\s*)(.*?)(\s*)$/s);
+          if(m[1])parts.push([m[1],false]); if(m[2])parts.push([m[2],m[2].length<=40&&/[A-Za-z0-9]/.test(m[2])]); if(m[3])parts.push([m[3],false]); lat=''; };
+        const flush=()=>{ flushLat(); if(cur){parts.push([cur,true]);cur=''} };
+        for(const {segment} of seg.segment(original)){
+          if(OPEN.test(segment)){ flush(); carry+=segment; continue; }
+          if(CLOSE.test(segment)){ flushLat(); if(carry){cur+=carry;carry=''} cur+=segment; continue; }
+          if(!JP.test(segment)){ // 英数字・記号・空白: 折り返し単位にせず、そのまま出す
+            if(cur){parts.push([cur,true]);cur=''} if(carry){lat+=carry;carry=''} lat+=segment; continue; }
+          flushLat();
+          if(cur&&!carry&&HIRA.test(segment)&&segment.length<=3){cur+=segment;continue}
+          if(cur&&!carry&&KANJI1.test(segment)&&/[\u4e00-\u9fff]$/.test(cur)){cur+=segment;continue}
+          flush(); cur=carry+segment; carry='';
         }
-        if(carry)cur+=carry;
-        if(cur)parts.push([cur,true]);
+        if(carry){cur+=carry;carry=''}
+        flush();
+        // 安全確認: 連結した結果が元の文字列と1文字でも違えば、何もせず元のまま残す
+        if(parts.map(p=>p[0]).join('')!==original)continue;
         const frag=document.createDocumentFragment();
         for(const [text,wrap] of parts){
           if(wrap){const sp=document.createElement('span');sp.className='ph';sp.textContent=text;frag.append(sp)}
