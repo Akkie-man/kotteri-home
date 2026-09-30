@@ -1,54 +1,22 @@
 <!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="google-adsense-account" content="ca-pub-4960959858706803">
-  <meta name="description" content="こってり開発部は、個人で開発しているソフトウェア開発ユニットです。コーヒーの産地を記録して集める「COFFEE LOG」を公開しています。">
-  <meta name="theme-color" content="#e84924">
-  <link rel="canonical" href="https://kotteri-apps.com/">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="こってり開発部">
-  <meta property="og:title" content="こってり開発部">
-  <meta property="og:description" content="こってり開発部は、個人で開発しているソフトウェア開発ユニットです。コーヒーの産地を記録して集める「COFFEE LOG」を公開しています。">
-  <meta property="og:image" content="https://kotteri-apps.com/og.jpg">
-  <meta property="og:url" content="https://kotteri-apps.com/">
-  <meta name="twitter:card" content="summary_large_image">
-  <title>こってり開発部 | 日々の楽しみを、続けたくなる形に。</title>
-  <link rel="stylesheet" href="/site.css">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google-adsense-account" content="ca-pub-4960959858706803">
+<meta name="description" content="こってり開発部は、個人で開発しているソフトウェア開発ユニットです。コーヒーの産地を記録して集める「COFFEE LOG」を公開しています。">
+<meta name="theme-color" content="#f7f0e3"><link rel="canonical" href="https://kotteri-apps.com/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website"><meta property="og:site_name" content="こってり開発部"><meta property="og:title" content="こってり開発部"><meta property="og:description" content="こってり開発部は、個人で開発しているソフトウェア開発ユニットです。コーヒーの産地を記録して集める「COFFEE LOG」を公開しています。"><meta property="og:image" content="https://kotteri-apps.com/og.jpg"><meta property="og:url" content="https://kotteri-apps.com/"><meta name="twitter:card" content="summary_large_image">
+<title>こってり開発部 | 日々の楽しみを、続けたくなる形に。</title><link rel="stylesheet" href="/site.css">
 </head>
 <body>
-  <header><div class="header-inner"><a class="wordmark" href="/">こってり開発部</a><nav aria-label="主なリンク"><a href="/#apps">アプリ</a><a href="/about-kotteri.html">開発の話</a><a href="/coffee-log-guide.html">使い方</a><a href="/privacy.html">プライバシー</a></nav></div></header>
-  <main>
-    <div class="hero"><div class="hero-copy"><div class="eyebrow">KOTTERI KAIHATSUBU</div><h1>好きなことには、<br>こってりいこう。</h1><p>ラーメンは濃いめ。アプリ作りも、好きなことには手を抜かない。日々の楽しみを、もっと面白くする開発部です。</p><div class="rule" aria-hidden="true"></div><a class="hero-cta" href="#apps">つくったアプリを見る ↓</a></div><img class="hero-photo" fetchpriority="high" decoding="async" src="/hero-shiba-ramen.jpg" alt="ラーメンとパソコンを前にした、こってり開発部の柴犬" width="1448" height="1086"></div>
-    <section id="apps"><div class="section-head"><h2>公開中のアプリ</h2><small>OUR APPS</small></div><div id="app-list"></div></section>
-    <section class="about" id="about"><div class="section-head"><h2>こってり開発部について</h2><small>ABOUT</small></div><p>個人でアプリを企画・制作する開発ユニットです。何気ない一杯や、日々の小さな体験を、振り返る楽しさと次を探すきっかけに変えていきます。<br>名前の由来や、作り手についての話は<a href="/about-kotteri.html">開発の話</a>で書いています。</p><div class="about-art"><picture><source type="image/webp" srcset="/thumbs-up-dog-600.webp"><img src="/thumbs-up-dog-600.png" alt="親指を立てる、デフォルメされた柴犬" width="600" height="600" loading="lazy" decoding="async"></picture></div></section>
-    <section class="contact"><div class="section-head"><h2>お問い合わせ</h2><small>CONTACT</small></div><p>ご意見・お問い合わせは <a href="https://www.instagram.com/kotteri_kaihatsubu/" target="_blank" rel="noopener noreferrer">Instagram @kotteri_kaihatsubu</a> へ。</p></section>
-  </main>
-  <footer><span>© こってり開発部</span><div><a href="/privacy.html">プライバシーポリシー</a><a href="/operator.html">運営者情報</a><a href="/updates.html">お知らせ</a><a href="https://www.instagram.com/kotteri_kaihatsubu/" target="_blank" rel="noopener noreferrer">Instagram</a></div></footer>
-  <script>
-    // アプリを追加する際は、この配列に1件追加します。公開中のものだけ表示します。
-    const apps = [{name:"COFFEE LOG",subtitle:"一杯から、世界を旅する。",description:"飲んだコーヒーを記録すると、産地のスタンプがパスポートと世界地図に広がります。好みを振り返りながら、次の一杯を探せます。",url:"https://coffee.kotteri-apps.com/",status:"published",features:["豆・ドリンクの記録と好みの評価","気分から選ぶ診断と産地の読み物","ログインすると別端末へ記録を引き継げる"]}];
-    const root=document.getElementById("app-list");
-    for(const app of apps.filter(item=>item.status==="published")){
-      const article=document.createElement("article");article.className="app";
-      const visual=document.createElement("div");visual.className="app-visual";
-      const label=document.createElement("span");label.textContent="APP / AVAILABLE NOW";
-      const title=document.createElement("strong");title.textContent=app.name;
-      const subtitle=document.createElement("p");subtitle.textContent=app.subtitle;
-      visual.append(label,title,subtitle);
-      const info=document.createElement("div");info.className="app-info";
-      const name=document.createElement("h3");name.textContent=app.name;
-      const description=document.createElement("p");description.textContent=app.description;
-      const list=document.createElement("ul");for(const feature of app.features){const li=document.createElement("li");li.textContent=feature;list.append(li)}
-      const link=document.createElement("a");link.href=app.url;link.target="_blank";link.rel="noopener noreferrer";link.textContent=app.name+"を開く\u00a0↗";
-      const guide=document.createElement("a");guide.href="/coffee-log-guide.html";guide.style.cssText="background:none;border:2px solid var(--ink);box-shadow:none;color:var(--ink);margin-top:10px";guide.textContent="使い方を見る";
-      info.append(name,description,list,link,guide);article.append(visual,info);root.append(article);
-    }
-  </script>
-  <script src="/site.js"></script>
-</body>
-</html>
+<header><div class="header-inner"><a class="wordmark" href="/">こってり開発部<span class="wordmark-dot">.</span></a><nav aria-label="主なリンク"><a href="/#apps">アプリ</a><a href="/stories.html">開発の話</a><a href="/coffee-log-guide.html">使い方</a></nav></div></header>
+<main>
+<section class="hero" aria-labelledby="hero-title"><div class="hero-copy"><p class="eyebrow">KOTTERI KAIHATSUBU / OSAKA</p><h1 id="hero-title">好きなことには、<br>こってりいこう。</h1><p class="hero-lead">ラーメンは濃いめ。アプリ作りも、好きなことには手を抜かない。日々の楽しみを、もっと面白くする開発部です。</p><div class="hero-actions"><a class="button button-primary" href="#apps">アプリを見る <span aria-hidden="true">↗</span></a><a class="text-link" href="/stories.html">開発の話を読む <span aria-hidden="true">→</span></a></div></div><img class="hero-photo" src="/hero-shiba-ramen.jpg" width="1448" height="1086" alt="ラーメンとパソコンを前にした柴犬" fetchpriority="high" decoding="async"></section>
+<section class="app-section" id="apps"><div class="section-kicker"><span>01 / APP</span><span>いま使えるもの</span></div><div class="section-title"><h2>一杯から、<br>世界を旅する。</h2><p>コーヒーが好きなら、産地を集める楽しみも。飲んだものを記録して、次に気になる一杯を見つけるアプリです。</p></div><article class="app-feature"><div class="app-visual" aria-label="COFFEE LOGの産地パスポートをイメージしたビジュアル"><div class="passport-cover"><span class="passport-top">COFFEE LOG</span><div class="passport-emblem" aria-hidden="true">ORIGIN<br>PASSPORT</div><span class="passport-bottom">一杯ずつ、世界が広がる。</span></div></div><div class="app-info"><p class="eyebrow">NOW AVAILABLE</p><h3>COFFEE LOG</h3><p>飲んだ豆の国がパスポートに増えていく。好みを残し、地図を眺め、次の一杯へ。</p><ul><li>豆とドリンクを記録</li><li>気分から一杯を探す</li><li>産地パスポートで振り返る</li></ul><a class="button button-primary" href="https://coffee.kotteri-apps.com/">アプリを開く <span aria-hidden="true">↗</span></a><a class="text-link" href="/coffee-log-guide.html">使い方を見る <span aria-hidden="true">→</span></a></div></article><p class="app-footnote">なぜ「国を集める」形にしたのか。<a href="/passport.html">産地パスポートを作った理由を読む →</a></p></section>
+<section class="stories-section" id="stories"><div class="section-kicker"><span>02 / STORIES</span><span>作るまでの話</span></div><div class="section-title"><h2>アプリの裏に、<br>こんな話があります。</h2><p>ラーメンから名前が生まれ、営業がアプリを作り始め、カクテルの話がコーヒーへ。順番は年表ではなく、気になる話からどうぞ。</p></div><div class="story-list"><a class="story-item" href="/about-kotteri.html"><span class="story-num">01</span><span class="story-copy"><span class="story-type">名前の由来</span><strong>「こってり」は、ラーメンから始まった。</strong><span>作らなかったアプリの名前が、開発部に残った話。</span></span><span class="story-arrow" aria-hidden="true">↗</span></a><a class="story-item" href="/story-start.html"><span class="story-num">02</span><span class="story-copy"><span class="story-type">作り手の話</span><strong>営業の僕が、アプリを作り始めた理由。</strong><span>社内のモック作りから、趣味の個人開発へ。</span></span><span class="story-arrow" aria-hidden="true">↗</span></a><a class="story-item" href="/bar-to-coffee.html"><span class="story-num">03</span><span class="story-copy"><span class="story-type">アプリの話</span><strong>カクテルから、コーヒーへ。</strong><span>「選ぶ」と「残す」を、二つのアプリで考えた話。</span></span><span class="story-arrow" aria-hidden="true">↗</span></a></div><a class="more-link" href="/stories.html">開発の話をすべて見る <span aria-hidden="true">→</span></a></section>
+<section class="about" id="about"><div class="about-copy"><div class="section-kicker"><span>03 / ABOUT</span><span>こってり開発部について</span></div><h2>好きなことには、<br>つい、こってり。</h2><p>個人でアプリを企画・制作する開発ユニットです。何気ない一杯や、日々の小さな体験を、振り返る楽しさと次を探すきっかけに変えていきます。名前の由来は、読み物で紹介しています。</p><a class="text-link" href="/about-kotteri.html">名前の由来を読む <span aria-hidden="true">→</span></a></div><div class="about-art"><picture><source type="image/webp" srcset="/thumbs-up-dog-600.webp"><img src="/thumbs-up-dog-600.png" alt="親指を立てるデフォルメされた柴犬" width="600" height="600" loading="lazy" decoding="async"></picture></div></section>
+<section class="contact"><div><p class="eyebrow">CONTACT</p><h2>感想、聞かせてください。</h2><p>アプリへのご意見やお問い合わせはInstagramへ。</p></div><a class="button button-outline" href="https://www.instagram.com/kotteri_kaihatsubu/" target="_blank" rel="noopener noreferrer">Instagramへ <span aria-hidden="true">↗</span></a></section>
+</main>
+<footer><span>© こってり開発部</span><div><a href="/stories.html">開発の話</a><a href="/operator.html">運営者情報</a><a href="/updates.html">お知らせ</a><a href="/privacy.html">プライバシーポリシー</a></div></footer>
+</body></html>

@@ -4,7 +4,7 @@
 
 ## アプリを追加する
 
-`index.html` の末尾にある `const apps = [...]` に、`name`、`subtitle`、`description`、`url`、`status`、`features` を持つデータを1件追加してください。`status: "published"` のアプリだけ表示されます。公開前にはURLと機能説明を確認してください。
+トップの `app-feature` に静的HTMLとして紹介を追加します。公開前にはURLと機能説明を確認してください。
 
 ## 外部リソース
 
@@ -21,6 +21,7 @@
 ## サイト構成（2026-09-30 追加分）
 
 - `/index.html`：ホーム
+- `/stories.html`：読み物一覧
 - `/about-kotteri.html`：読み物1「こってり開発部という名前ができるまで」
 - `/story-start.html`：読み物2「営業の僕が、趣味でアプリを作り始めた話」
 - `/bar-to-coffee.html`：読み物3「BAR LOGからCOFFEE LOGへ」
@@ -30,7 +31,7 @@
 - `/updates.html`：お知らせ
 - `/privacy.html`：プライバシーポリシー
 - `/site.css`：全ページ共通スタイル
-- `/site.js`：全ページ共通スクリプト（日本語の文節折り返し処理）
+- JavaScriptなしでトップのアプリ紹介と読み物の導線が表示されます。
 - `/sitemap.xml`, `/robots.txt`
 
 読み物を追加する場合は、既存の記事ファイルをコピーして本文と`nav_links`相当のリンクを差し替えてください。
