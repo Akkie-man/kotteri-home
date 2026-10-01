@@ -4,11 +4,11 @@
 
 ## アプリを追加する
 
-トップの `app-feature` に静的HTMLとして紹介を追加します。公開前にはURLと機能説明を確認してください。
+`build-content.cjs` のアプリ紹介を編集して再生成します。記事の追加は [ARTICLE-GUIDE.md](ARTICLE-GUIDE.md) を参照してください。
 
 ## 外部リソース
 
-外部フォントや JavaScript ライブラリは使用していません。`hero-shiba-ramen.jpg` は、インスタ用の柴犬画像を参考に新たに生成したサイト専用の実写寄りビジュアルです。`thumbs-up-dog-600.webp`（PNGフォールバック付き） は以前制作したデフォルメ柴犬です。ホームから COFFEE LOG と Instagram にリンクしています。AdSense の所有権確認メタタグは各 HTML の head にあり、広告配信スクリプトはありません。
+外部フォントや JavaScript ライブラリは使用していません。`hero-shiba-ramen.jpg` は、インスタ用の柴犬画像を参考に新たに生成したサイト専用の実写寄りビジュアルです。`thumbs-up-dog-600.webp`（PNGフォールバック付き） は以前制作したデフォルメ柴犬です。ホームから COFFEE LOG、BAR LOG、Instagram にリンクしています。AdSense の所有権確認メタタグは各 HTML の head にあり、広告配信スクリプトはありません。
 
 ## 公開前に確認すること
 
@@ -35,3 +35,9 @@
 - `/sitemap.xml`, `/robots.txt`
 
 読み物を追加する場合は、既存の記事ファイルをコピーして本文と`nav_links`相当のリンクを差し替えてください。
+
+## 2026-10-02 ホーム刷新
+
+アプリの実画面を使った2枚のカード、両アプリの使い方一覧、新着記事とおすすめ記事、BAR LOG紹介・コレクション解説・使い方を追加しました。
+
+記事を更新するときだけ `node build-content.cjs` を実行し、生成HTMLも保存します。公開時のビルドや外部ライブラリは不要です。手順は [ARTICLE-GUIDE.md](ARTICLE-GUIDE.md) に記載しています。
