@@ -8,7 +8,7 @@
 
 ## 外部リソース
 
-外部フォントや JavaScript ライブラリは使用していません。`hero-shiba-ramen.jpg` は、インスタ用の柴犬画像を参考に新たに生成したサイト専用の実写寄りビジュアルです。`thumbs-up-dog-600.webp`（PNGフォールバック付き） は以前制作したデフォルメ柴犬です。ホームから COFFEE LOG、BAR LOG、Instagram にリンクしています。AdSense の所有権確認メタタグは各 HTML の head にあり、広告配信スクリプトはありません。
+外部フォントや JavaScript ライブラリは使用していません。`hero-shiba-ramen.jpg` は、インスタ用の柴犬画像を参考に新たに生成したサイト専用の実写寄りビジュアルです。`thumbs-up-dog-600.webp`（PNGフォールバック付き） は以前制作したデフォルメ柴犬です。ホームから COFFEE LOG、BAR LOG、Instagram にリンクしています。AdSense の所有権確認メタタグは各 HTML の head にあります。広告は `ads.js` が管理します（下記「広告」）。
 
 ## 公開前に確認すること
 
@@ -41,3 +41,11 @@
 アプリの実画面を使った2枚のカード、両アプリの使い方一覧、新着記事とおすすめ記事、BAR LOG紹介・コレクション解説・使い方を追加しました。
 
 記事を更新するときだけ `node build-content.cjs` を実行し、生成HTMLも保存します。公開時のビルドや外部ライブラリは不要です。手順は [ARTICLE-GUIDE.md](ARTICLE-GUIDE.md) に記載しています。
+
+## 広告（Google AdSense 手動広告）
+
+- 設定（クライアントID、スロットID、有効/無効）は `ads.js` 冒頭の `AD_CONFIG` だけです。自動広告は使いません。
+- 広告を出すページと位置は `build-content.cjs` の `adPlan` が決めます。`node build-content.cjs` を実行すると、広告枠（`<div class="ad-slot">`）と `<script src="/ads.js" defer>` が対象ページだけに入り、それ以外のページ（プライバシー、運営者情報、お知らせ、一覧）からは取り除かれます。
+- 広告は `data-ad-status="filled"` になった後だけ「広告」ラベルと罫線を表示します。未配信・ブロック・読み込み失敗時は広告枠だけが非表示になります。`<html>`・`<body>` には広告用の class や属性を付けません。
+- 本文が `AD_LONG_ARTICLE_CHARS`（3000文字）以上の読み物だけ、本文途中にも1枠入ります。
+- `ads.txt` はルートに置いています（`google.com, pub-4960959858706803, DIRECT, f08c47fec0942fa0` の1行）。

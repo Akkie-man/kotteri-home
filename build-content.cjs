@@ -18,11 +18,36 @@ fs.writeFileSync('bar-log-guide.html',page('bar-log-guide','BAR LOGのはじめ�
 let home=fs.readFileSync('index.html','utf8').replace(/<style>[\s\S]*?<\/style>/,'');
 home=home.replace(/<section class="app-section"[\s\S]*?(?=<section class="stories-section")/,`<section class="app-section" id="apps"><div class="section-kicker"><span>01 / APPS</span><span>いま使えるもの</span></div><div class="section-title"><h2><span>今日の一杯を、</span><span>次の楽しみに。</span></h2><p>コーヒーも、カクテルも。<br>好みを残して、次の一杯を見つける。<br>日々の楽しみに寄り添う二つのアプリです。</p></div><div class="products">${app('coffee')}${app('bar')}</div><aside class="account-note"><strong>COFFEE LOGと同じアカウントで利用できます</strong><p>BAR LOGでも同じメールアドレス・パスワードを使えます。ログインはアプリごとに必要で、記録はそれぞれ別々に保存されます。</p></aside><p class="screen-note">掲載画像はアプリの画面です。表示内容は更新により変わることがあります。</p></section>\n`);
 home=home.replace(/<section class="stories-section"[\s\S]*?(?=<section class="about")/,`<section class="stories-section" id="stories"><div class="section-kicker"><span>02 / STORIES</span><span>読み物</span></div><div class="section-title"><h2><span>好きなことの、</span><span>つづきの話。</span></h2><p>作ったきっかけも、使う楽しみも。<br>気になる話から、どうぞ。</p></div><div class="featured-story"><div class="story-art">${glass}<span>NEW STORY</span><strong>今夜、何を飲もう。</strong></div><div><p class="eyebrow">新しい記事 · ${data.articles[0].date}</p><h3><a href="/${data.articles[0].slug}.html">${esc(data.articles[0].title)}</a></h3><p>${esc(data.articles[0].summary)}</p><a class="text-link" href="/${data.articles[0].slug}.html">記事を読む →</a></div></div><p class="recommend-label">はじめての方に、おすすめの2本</p><div class="story-list">${[data.legacy[0],data.legacy[3]].map(a=>link(a)).join('')}</div><a class="more-link" href="/stories.html">読み物をすべて見る →</a></section>\n`);
-home=home.replace(/<aside class="latest-news"[\s\S]*?<\/aside>/,'');
+home=home.replace(/<aside class="latest-news"[\s\S]*?<\/aside>\n?/,'');
 home=home.replace('</section>\n<section class="app-section"','</section>\n<aside class="latest-news"><span>NEWS</span><time datetime="2026-10-01">2026.10.01</time><a href="/bar-log-launch.html">BAR LOGを公開しました <span aria-hidden="true">→</span></a><a class="all-news" href="/updates.html">お知らせ一覧</a></aside>\n<section class="app-section"');
 home=home.replace('開発の話を読む','読み物を読む');fs.writeFileSync('index.html',home);
 let updates=fs.readFileSync('updates.html','utf8').replaceAll('こってり開発部とCOFFEE LOGの更新情報です。','こってり開発部、COFFEE LOG、BAR LOGの更新情報です。');
 if(!updates.includes('data-update="bar-launch"'))updates=updates.replace('<article class="article-body">','<article class="article-body">\n<div class="update-item" data-update="bar-launch"><time datetime="2026-10-01">2026-10-01</time><p>BAR LOGを公開しました。気分からカクテルを探し、飲んだ記録やマップ、12種類のテーマ別コレクションを楽しめます。<a href="/bar-log-launch.html">紹介記事を読む →</a></p></div>');fs.writeFileSync('updates.html',updates);
-for(const file of fs.readdirSync('.').filter(f=>f.endsWith('.html'))){let s=fs.readFileSync(file,'utf8');s=s.replace(/<header>[\s\S]*?<\/header>/,header).replace(/<footer>[\s\S]*?<\/footer>/,footer);if(!s.includes('href="/refresh.css"'))s=s.replace('</head>','<link rel="stylesheet" href="/refresh.css">\n</head>');fs.writeFileSync(file,s);}
+// ---- 広告(Google AdSense 手動広告) ----
+// 広告を出すページはここで一元管理します。ここに無いページ(プライバシーポリシー、運営者情報、お知らせ、一覧ページなど)には、
+// 広告枠も ads.js の読み込みも入れません(再実行すると取り除かれます)。IDなどの設定は ads.js 冒頭の AD_CONFIG のみ。
+const AD_LONG_ARTICLE_CHARS=3000; // 記事本文(空白除く)がこの文字数以上の「十分に長い記事」だけ、本文途中にも1枠追加
+const adPlan=new Map([['index.html','home'],['coffee-log-guide.html','app'],['bar-log-guide.html','app'],['bar-log-launch.html','app'],['about-kotteri.html','reading'],['story-start.html','reading'],['bar-to-coffee.html','reading'],['passport.html','reading']]);
+for(const a of data.articles){if(!adPlan.has(a.slug+'.html'))adPlan.set(a.slug+'.html','reading');} // content.json の新しい読み物は自動で記事末尾に広告
+const adSlot=(id)=>`<div class="ad-slot" data-ad-placement="${id}"></div>`;
+const adStrip=(s)=>s.replace(/<div class="ad-slot"[^>]*><\/div>/g,'').replace(/<script src="\/ads\.js" defer><\/script>\n/g,'');
+function adMid(s,id){
+  const m=s.match(/<article class="article-body">([\s\S]*?)<\/article>/);if(!m)return s;
+  const text=m[1].replace(/<[^>]+>/g,'').replace(/\s/g,'');if(text.length<AD_LONG_ARTICLE_CHARS)return s;
+  const pos=(re)=>{const r=[];let x;while((x=re.exec(m[1])))r.push(x.index);return r;};
+  let blocks=pos(/<h2[ >]/g);if(blocks.length<4)blocks=pos(/<p[ >]/g);if(blocks.length<6)return s;
+  const at=blocks[Math.floor(blocks.length/2)];const start=m.index+m[0].indexOf(m[1]);
+  return s.slice(0,start+at)+adSlot(id+'-mid')+s.slice(start+at);
+}
+function adApply(file,s,kind){
+  s=adStrip(s);if(!kind)return s;
+  const id=file.replace(/\.html$/,'');
+  const put=(from,to)=>{if(!s.includes(from))throw Error('広告枠の挿入位置が見つかりません: '+file+' '+from);s=s.replace(from,to);};
+  if(kind==='home')put('</section>\n<section class="stories-section"',adSlot(id+'-below-apps')+'\n</section>\n<section class="stories-section"'); // アプリ紹介一覧の下
+  else if(kind==='app')put('</main>',adSlot(id+'-bottom')+'</main>');                                                                      // 紹介本文と利用リンクの下
+  else{put('</article>','</article>'+adSlot(id+'-article-end'));s=adMid(s,id);}                                                           // 記事末尾(+長い記事のみ本文途中)
+  return s.replace('</head>','<script src="/ads.js" defer></script>\n</head>');
+}
+for(const file of fs.readdirSync('.').filter(f=>f.endsWith('.html'))){let s=fs.readFileSync(file,'utf8');s=s.replace(/<header>[\s\S]*?<\/header>/,header).replace(/<footer>[\s\S]*?<\/footer>/,footer);if(!s.includes('href="/refresh.css"'))s=s.replace('</head>','<link rel="stylesheet" href="/refresh.css">\n</head>');s=adApply(file,s,adPlan.get(file));fs.writeFileSync(file,s);}
 const pages=fs.readdirSync('.').filter(f=>f.endsWith('.html')).sort();fs.writeFileSync('sitemap.xml','<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+pages.map(f=>`  <url><loc>https://kotteri-apps.com/${f==='index.html'?'':f}</loc></url>`).join('\n')+'\n</urlset>\n');
 console.log('Built articles, guides, homepage, navigation and sitemap.');

@@ -5,3 +5,12 @@ body{line-break:strict;word-break:normal;overflow-wrap:break-word}h1,h2,h3{text-
 @media(max-width:360px){.product-body{padding:20px}.product-visual{padding-left:18px;padding-right:18px}.product-caption strong{font-size:17px}.hero h1{font-size:32px}.section-title h2{font-size:30px}.product-actions .button{font-size:14px;padding:12px;gap:10px}.product-body h3{font-size:30px}.article-hero h1{font-size:29px}}
 
 .hero h1{font-size:clamp(27px,3.3vw,42px);line-height:1.5;letter-spacing:-.045em}.hero h1 span{display:block;white-space:nowrap}@media(max-width:600px){.hero h1{font-size:clamp(27px,7.5vw,36px)}}
+
+/* ---- 広告枠(ads.js) ----
+   読み込み待ちの枠は「幅だけ持つ高さ0の箱」。ラベル・罫線・余白は、広告が実際に入った後(data-ad-state="filled")だけ出す。
+   html / body には広告用の class や属性を付けない。 */
+.ad-slot{display:block;width:100%;max-width:720px;margin:0 auto;padding:0;border:0}
+.ad-slot[hidden]{display:none!important}
+.ad-slot ins.adsbygoogle{display:block;margin:0 auto;text-decoration:none}
+.ad-slot[data-ad-state="filled"]{margin:clamp(40px,6vw,56px) auto;padding-top:14px;border-top:1px solid var(--line)}
+.ad-slot[data-ad-state="filled"]::before{content:"広告";display:block;margin-bottom:8px;font-size:11px;line-height:1;letter-spacing:.12em;color:var(--muted)}
